@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="./jquery-1.12.4.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+    <div id="app">
+        <input id="input" type="text">
+        <buttom id="btn">提交</buttom>
+        <ul id="list">
+
+
+        </ul>
+    </div>
+
+    <script>
+        function Page() {
+
+        }
+        $.extend(Page.prototype, {
+            init: function () {
+                this.bindEvents()
+            },
+            bindEvents: function () {
+                var btn = $('#btn');
+                btn.on('click', $.proxy(this.handleBtnClick, this))
+            },
+            handleBtnClick: function () {
+                // 提高代码性能
+                var inputElem = $("#input");
+                var inputValue = $("#inpult").val();
+                var ulElem = $("#list");
+                ulElem.append('<li>' + inputValue + '</li>');
+                $("#input").val('');
+            }
+        })
+        var page = new Page();
+        page.init();
+    </script>
+</body>
+
+</html>
