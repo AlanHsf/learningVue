@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中的样式绑定</title>
+    <script src="./vue.js"></script>
+    <style>
+       .activated {
+           color:red;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div :style="[styleObj ,{fontSize:'20px'}] "
+        @click="handleDivClick">
+        你点我呀！
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                styleObj:{
+                    color:"red"
+                }
+            },
+            methods:{
+                handleDivClick:function(){
+                    this.styleObj.color= this.styleObj.color==="black"?"red":"black";
+                }
+            }
+           
+        })
+    </script>
+</body>
+</html>

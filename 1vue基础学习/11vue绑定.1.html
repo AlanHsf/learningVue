@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中的样式绑定</title>
+    <script src="./vue.js"></script>
+    <style>
+       .activated {
+           color:red;
+       }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div @click="handleDivClick"
+             :class="[activated,activatedOne]"
+        >
+        你点我呀！</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                activated: "",
+                activatedOne: "activated-one"
+            },
+            methods:{
+                handleDivClick: function(){
+                    // if(this.activated === "activated"){
+                    //     this.activated = ""
+                    // }else{
+                    //     this.activated = "activated"
+                    // }
+                    this.activated = this.activated==="activated"?
+                    "":"activated"
+               }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的插槽（slot）</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child>
+            <p>Alan</p> 
+            <p>Alan</p> 
+            <p>Alan</p>   
+            <p>Alan</p>
+            <p>Alan</p>       
+        </child>
+    </div>
+    <script>
+        Vue.component('child',{
+            props:['content'],
+            template: `<div>
+                            <p>hello</p>
+                            <slot></slot>
+                        </div>`
+        })
+
+
+        var vm = new Vue({
+            el:"#root"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS动画原理</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet"type="text/css" href="./animate.css">
+    <style>
+       
+/*  
+        .fade-enter,.fade-leave-to  {
+            transform-origin: left center;
+            animation: bounce-in 2s ;
+        }
+        .active , .leave{
+            transform-origin: left center;
+             animation: bounce-in 2s reverse;
+        }  */
+        
+    </style>
+</head>
+<body>
+    <div id="root">
+        <transition name="fade"
+        enter-active-class="animated swing"
+        leave-active-class="animated shake"
+        >
+            <div v-if="show">你好,Alan</div>
+        </transition>
+        <button @click= 'handleClick'>change</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#root",
+            data:{
+                show: true
+            },
+            methods:{
+                handleClick: function(){
+                    this.show= !this.show
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div>
+            <input type=" text" v-model="todoValue">
+            <button @click="handleBtnClick">提交</button>
+        </div>
+        <ul>
+            <todo-item v-bind:content="item" 
+                        v-for="item in list">
+
+            </todo-item>
+        </ul>
+
+    </div>
+    <script>
+        Vue.component("TodoItem", {
+            props:['content'],
+            template: "<li>{{content}}</li>"
+        })
+        // 局部组件
+        // var TodoItem = {
+        //     props: ['content'],
+        //     template: "<li>{{content}}</li>"
+        // }
+        var app = new Vue({
+            el: "#root",
+            // component:{
+            //     TodoItem: TodoItem,
+            // },
+            date: {
+              todoValue: "",
+              list: []
+            },
+            methods: {
+                handleBtnClick: function () {
+                    this.list.push(this.todoValue)
+                    this.todoValue= ""
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

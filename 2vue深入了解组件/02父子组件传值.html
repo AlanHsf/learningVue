@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <counter :count="3" @inc="handleIncrease"></counter>
+        <counter :count="2" @inc="handleIncrease"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        var counter ={
+            props:['count'],
+            data:function(){
+                //单向数据流，不能直接使用父组件传来的值，要复制一个副本
+                return{
+                    number:this.count
+                }
+            },
+            template:'<div @click="handleClick">{{number}}</div>',
+            methods:{
+                handleClick:function(){
+                    this.number = this.number +2;
+                    this.$emit('inc',2)
+                }
+            }
+        }
+        var vm = new Vue({
+            el:'#root',
+            data:{
+                total: 5
+            },
+           
+            components:{
+                counter:counter
+            },
+            methods:{
+                handleIncrease: function(step){
+                    this.total+= step
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
